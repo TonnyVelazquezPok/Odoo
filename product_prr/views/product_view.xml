@@ -66,6 +66,14 @@
                             </group>
                         </group>
                     </page>
+                    <page name="Part numbers" string="Part Numbers">
+                        <field name="product_customer_id" widget="one2many">
+                            <tree editable = "bottom">
+                                <field name = "part_number"/>
+                                <field name = "customers" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                    </page>
                 </notebook>
                 <group name="group_general" position="inside">
                     <field name="mold_qty" class="oe_inline"/>
@@ -73,6 +81,11 @@
                     <field name="injection_qty" class="oe_inline"/>
                     <field name="external_specification"/>
                     <field name="internal_specification"/>
+                    <field name="red_equ" class="oe_inline"/>
+                    <field name="avr"/>
+                    <field name="smr"/>
+                    <field name="cmr" class="oe_inline"/>
+                    <field name="coupon" class="oe_inline"/>
                 </group>
             </field>
         </record>
@@ -119,6 +132,26 @@
                     </group>
                     <group>
                         <field name="document_file" widget="many2many_binary" class="oe_inline" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="res_partner_form" model="ir.ui.view">
+        <field name="name">product.customer</field>
+        <field name="model">product.customer</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name = "part_number"/>
+                        </group>
+                        <group>
+                            <field name = "customers" widget="many2many_tags"/>
+                        </group>
                     </group>
                 </sheet>
             </form>

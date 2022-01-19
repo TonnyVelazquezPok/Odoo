@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'stock', "quality_chemical_element"],
+    'depends': ['base', 'product', 'stock', "quality_chemical_element", "mrp", "quality_specifications"],
 
     # always loaded
     'data': [
@@ -29,6 +29,7 @@
         "data/report_paperformat.xml",
 
         "views/product_view.xml",
+        "views/product_mrp_bom_view.xml",
         "views/product_menu_views.xml",
 
         "report/product_prr_report.xml",

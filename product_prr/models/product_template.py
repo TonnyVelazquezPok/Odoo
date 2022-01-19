@@ -54,6 +54,31 @@ class ProductTemplate(models.AbstractModel):
         string="Total yield",
         compute='_compute_get_total_yield'
     )
+    red_equ = fields.Char(
+        string='RED EQ',
+        size=50,
+    )
+    avr = fields.Char(
+        string='AVR',
+        size=50,
+    )
+    smr = fields.Char(
+        string='SMR',
+        size=50,
+    )
+    cmr = fields.Char(
+        string='CMR',
+        size=50,
+    )
+    coupon = fields.Char(
+        string='Coupon',
+        size=50,
+    )
+    product_customer_id = fields.One2many(
+        comodel_name='product.customer',
+        inverse_name='product_template_id',
+        string='Customer Products',
+    )
     welding_documents =fields.One2many(
         comodel_name='product.welding.specification.document',
         inverse_name='product_template_id',
@@ -82,10 +107,6 @@ class ProductTemplate(models.AbstractModel):
         inverse_name='product_tmpl_id',
         string='Product bom',
     )
-    # alloy_id = fields.Many2one(
-    #     'product.alloy',
-    #     string='Alloy',
-    # )
 
     @api.depends('casting_weight', 'gross_weight')
     def _compute_get_gross_yield(self):
@@ -101,21 +122,3 @@ class ProductTemplate(models.AbstractModel):
     def _compute_get_total_yield(self):
         for product in self:
             product.total_yield = (product.part_weight / product.gross_weight)*100
-
-    # @api.model
-    # def get_prr_values(self):
-    #     product_values = []
-    #     for product in self:
-    #         product_values.append({
-    #             'name': product.name,
-    #             'sequence': product.sequence,
-    #             'type': product.type,
-    #             'description': product.description,
-    #             'image_field_name': product.image_1920,
-    #             # 'currency_id': product.currency_id,
-    #             # 'cost_currency_id': product.cost_currency_id,
-    #         })
-    #     return self.env.ref('product_prr.product_prr_report').report_action(self, data=product_values)
-    #     # return {
-    #     #     "report_data": product_values,
-    #     # }
