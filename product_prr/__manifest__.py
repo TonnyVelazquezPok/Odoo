@@ -1,32 +1,25 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Product prr",
+    'name': "Product Review Report",
 
     'summary': """
-        Agrega un nuevo campo para precio en el form del producto
+        Fields are added for the generation of the product review report to the product template
         """,
 
     'description': """
-        Agrega un nuevo campo para precio en el form del producto
+        Fields are added for the generation of the product review report to the product template
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    "author": "Corporación POK S.A. de C.V.",
+    "website": "https://pok.com.mx",
+    'category': 'PRR',
+    'version': '14.0.0.1.0',
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Sale',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
     'depends': ['base', 'product', 'stock', "quality_chemical_element", "mrp", "quality_specifications"],
 
-    # always loaded
     'data': [
 	    'security/product_prr_security.xml',
         'security/ir.model.access.csv',
-        "data/report_paperformat.xml",
 
         "views/product_view.xml",
         "views/product_mrp_bom_view.xml",
